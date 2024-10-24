@@ -7,5 +7,9 @@ urlpatterns = [
          LoginView.as_view(template_name="users/login.html"), 
          name="login"
          ),
+    path("loguin/", 
+         LoginView.as_view(template_name="users/loguin.html"), 
+         name="loguin"
+         ),
     path("logout/", LogoutView.as_view(), name="logout"),
 ]

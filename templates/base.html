@@ -7,6 +7,29 @@
   <title>Coffe Shop</title>
 </head>
 <body>
+  <header class="bg-gray-800 text-white p-4">
+    <div class="grid grid-cols-12">
+      <div class="place-items-center">  
+        <h1 class="text-2xl">Coffe Shop</h1>
+      </div>
+      <div class="col-span-10">
+        <div class="flex justify-between">
+          Hola, 
+          {% if user.is_authenticated %}
+            {{ user.username }}
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+          {% else %}
+            <a href="{% url 'login' %}">Iniciar sesión</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="grid justify-end">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <a href="{% url 'list_products' %}">Carrito</a>
+        </button>
+      </div>
+   </div> 
+  </header>
   <div class="container mx-auto px-4">
     {% block content %}
     {% endblock %}

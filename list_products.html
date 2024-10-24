@@ -1,0 +1,29 @@
+  {% extends "base.html" %}
+  
+  {% block content %}
+  <div class="container mx-auto px-4">
+    <h1 class="text-3xl font-bold underline text-clifford">Listar productos</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Foto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            {% if product.photo %}
+              <td><img src="{{ product.photo.url }}" alt="{{ product.name }}" width="100"></td>
+            {% endif %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>  
+  {% endblock %}

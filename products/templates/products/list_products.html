@@ -1,0 +1,39 @@
+  {% extends "base.html" %}
+
+  
+  {% block content %}
+  
+  <div class="container mx-auto">
+  
+    <h1 class="text-sky-600 text-center text-3xl font-bold text-clifford">Listar productos</h1>
+    <table class="container mt-10 border-separate border-spacing-2 border border-blue-300 border-2">
+      <thead>
+        <tr v> 
+          <th class="border border-2 border-blue-300">Nombre</th>
+          <th class="border border-2 border-blue-300">Descripción</th>
+          <th class="border border-2 border-blue-300">Precio</th>
+          <th class="border border-2 border-blue-300">Foto</th>
+          <th class="border border-2 border-blue-300">Creado</th>
+          <th class="border border-2 border-blue-300">Actualizado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+            <td class="border border-slate-300">{{ product.name }}</td>
+            <td class="border border-slate-300">{{ product.description }}</td>
+            <td class="text-end border border-slate-300" >{{ product.price }}</td>
+            {% if product.photo %}
+              <td class="flex justify-center border border-slate-300"><img src="{{ product.photo.url }}" alt="{{ product.name }}" width="100"></td>
+            {% else %}
+              <td class="text-center border border-slate-300">{{product.name}}</td>
+            {% endif %}
+            <td class="text-center border border-slate-300">{{ product.date_created}}</td>
+            <td class="text-center border border-slate-300">{{ product.date_updated }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+  </div>
+  {% endblock %}

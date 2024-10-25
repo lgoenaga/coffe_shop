@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="px-3 text-4xl mb-4 mt-4">My Orders</h1>
+    <table class="table table-striped">
+        <thead >
+            <tr class="grid grid-cols-12 gap-4 justify-items-center">
+                <th class="col-span-1">Order ID</th>
+                <th class="col-span-9">Order Date</th>
+                <th class="col-span-2">Order Status</th>
+            </tr>
+        </thead>
+        <tbody >
+                <tr class="grid grid-cols-12 gap-4 justify-items-center">
+                    <td class="col-span-1">{{ order.id }}</td>
+                    <td class="col-span-9 justify-items-center">{{ order.order_date }}</td>
+                    <td class="col-span-2">{{ order.is_active}}</td>
+                </tr>
+                <tr class="grid grid-cols-12 gap-4 justify-items-center mt-6">
+                    <td class="col-span-12">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="grid grid-cols-12 gap-4 justify-items-center">
+                                    <th class="col-span-3">Product</th>
+                                    <th class="col-span-2">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product_order in order.orderproduct_set.all %}
+                                    <tr class="grid grid-cols-12 gap-4 justify-items-center">
+                                        <td class="col-span-3">{{ product_order.product.name }}</td>
+                                        <td class="col-span-2">{{ product_order.product.price }}</td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="5">No products in this order</td>
+                                    </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+        </tbody>
+    </table>
+{% endblock %}
+

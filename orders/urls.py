@@ -1,10 +1,9 @@
 
 from django.urls import path
+from .views import CreateOrderProdctView, MyOrdersView
 
-from products.views import productListView
-from products.views import productFormView
 
 urlpatterns = [
-    path("agregar/", productFormView.as_view(), name="add_product"),
-    path("listar/", productListView.as_view(), name="list_products"),
+    path('my-orden/', MyOrdersView.as_view(), name='my_orders'),
+    path('agregar-producto/', CreateOrderProdctView.as_view(), name='create_order_product'),
 ]

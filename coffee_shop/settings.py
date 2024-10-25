@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "crispy_forms",
     "crispy_tailwind",
+    "rest_framework",
     "products",
     "users",
     "orders",
@@ -137,3 +138,9 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 LOGIN_REDIRECT_URL = "lists_products"
 LOGOUT_REDIRECT_URL = "login"
 LOGIN_URL = "login"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
